@@ -1,0 +1,20 @@
+﻿DATA dept;
+	INPUT name $6. +1 bdate DATE7. +1 hired MMDDYY8.;
+	hiredate = hired + (365.25 * 3);
+	hireqtr = QTR(hiredate);
+	IF hired > '01jan94'D THEN new = 'YES';
+	FORMAT bdate MMDDYY8. Hired YYMMDD8. Hiredate WEEKDATE17.;
+	CARDS;
+김철수 01jan60 09-15-90
+최민지 05oct49 01-24-92
+이영희 18mar88 10-10-93
+오인수 29feb80 05-29-94
+;
+RUN;
+
+PROC PRINT DATA=dept;
+RUN;
+
+
+
+
